@@ -1,0 +1,265 @@
+/* General */
+@font-face {
+    font-family: Assistant;
+    src: url(fonts/Assistant-Regular.ttf);
+    font-weight: normal;
+}
+
+@font-face {
+    font-family: Assistant;
+    src: url(fonts/Assistant-SemiBold.ttf);
+    font-weight: 600;
+}
+
+@font-face {
+    font-family: Assistant;
+    src: url(fonts/Assistant-ExtraBold.ttf);
+    font-weight: 800;
+}
+
+@font-face {
+    font-family: PressStart2P;
+    src: url(fonts/PressStart2P-Regular.ttf);
+    font-weight: normal;
+}
+
+body {
+    background-color: #4d4d4d;
+    font-family: Assistant;
+}
+
+h1 {
+    margin: 0;
+}
+
+ul {
+    margin: 0;
+    padding-left: 0;
+    list-style: none;
+}
+
+p {
+    margin: 0;
+}
+
+hr {
+    border: solid 1px #e3b800;
+}
+
+input:last-of-type {
+    margin-bottom: 0;
+}
+
+input[type="text"], input[type="number"] {
+    border: 0;
+    width: 100%;
+    padding: 5px;
+    box-sizing: border-box;
+}
+
+input[type="button"] {
+    width: 25%;
+    margin-bottom: 5px;
+}
+
+input[type="button"].full-width {
+    width: 100%;
+}
+
+input[type="submit"] {
+    width: 100%;
+    margin-bottom: 5px;
+}
+
+.notice {
+    color: red;
+    background-color: white;
+    border:solid 5px red;
+    border-radius: 20px;
+    font-weight: 800;
+    padding: 2px 10px 5px;
+    font-size: 25px;
+    margin: 10px;
+    display: inline-block;
+}
+
+/* Main Page */
+.main-container {
+    background-color: #c83737;
+    margin: 30px auto 0;
+    width: 320px;
+    border: solid 7px #ffcc00;
+    box-shadow: 0 5px 0 #333;
+    height: 395px;
+    position: relative;
+}
+
+form[name="machine"] {
+    text-align: center;
+}
+
+.app-name {
+    text-align: center;
+    color: white;
+    background-color: #a02c2c;
+    padding: 3px 0 5px;
+    font-size: 43px;
+    font-weight: 800;
+    margin-bottom: 5px;
+}
+
+.instructions {
+    text-align: center;
+    margin: 0;
+    color: #582323;
+    margin-bottom: 5px;
+}
+
+input[name="numbersIndicator"] {
+    color: lime;
+    background-color: #222;
+    width: 80%;
+    font-family: PressStart2P;
+    text-align: center;
+    border: solid 4px #7f2323;
+    font-size: 31px;
+    padding: 30px 15px 25px;
+    letter-spacing: 6px;
+    height: 80px;
+}
+
+.process-indicator {
+    background-color: #d44c4c;
+    display: flex;
+    height: 15px;
+    justify-content: space-between;
+    width: 40%;
+    margin: 0 auto 30px;
+    padding: 5px 23px;
+    border-bottom-right-radius: 10px;
+    border-bottom-left-radius: 10px;
+}
+
+.process-indicator .bulb {
+    background-color: #1a1a1a;
+    height: auto;
+    width: 15px;
+    border-radius: 100%;
+}
+
+#generate {
+    width: 55%;
+    background-color: #55d400;
+    border: 0;
+    cursor: pointer;
+    padding: 17px 0 12px;
+    box-shadow: 0 3px 0 #246a00;
+    margin-bottom: 20px;
+    outline: 0;
+    transition: all 0.1s ease;
+}
+
+#generate:active {
+    box-shadow: 0 0 0 #246a00;
+    transform: translate(0,3px);
+}
+
+#generate .btn-icon {
+    width: 25%;
+    fill: #246a00;
+}
+
+nav {
+    position: absolute;
+    left: 0;
+    right: 0;
+    bottom: 0;
+}
+
+nav ul {
+    display: flex;
+    justify-content: space-around;
+}
+
+nav a {
+    background-color: dodgerblue;
+    color: white;
+    text-decoration: none;
+    font-weight: 800;
+    width: 33.333%;
+    text-align: center;
+    padding: 10px 5px;
+}
+
+nav a.selected {
+    background-color: #1375d4;
+}
+
+nav a li {
+    width: 100%;
+}
+
+/* Settings Page */
+.settings-container {
+    display: flex;
+    align-items: center;
+    justify-content: space-around;
+    margin-bottom: 63px;
+}
+
+form[name="number-length"] {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    grid-gap: 30px;
+    margin: 0 0 25px;
+}
+
+input[type="radio"] {
+    margin: 0;
+}
+
+form[name="number-length"] input[type="radio"] {
+    position: relative;
+    width: 30px;
+    height: 30px;
+}
+
+form[name="number-length"] input[type="radio"]:after {
+    color: white;
+    position: absolute;
+    top: 35px;
+    left: 50%;
+    transform: translate(-50%,0);
+}
+form[name="number-length"] input[type="radio"]#radio1:after {content: "1";}
+form[name="number-length"] input[type="radio"]#radio2:after {content: "2";}
+form[name="number-length"] input[type="radio"]#radio3:after {content: "3";}
+form[name="number-length"] input[type="radio"]#radio4:after {content: "4";}
+form[name="number-length"] input[type="radio"]#radio5:after {content: "5";}
+form[name="number-length"] input[type="radio"]#radio6:after {content: "6";}
+
+/* About Page */
+.about-me {
+    background-color: #ffcc00;
+    margin: 0 15px;
+    padding: 15px;
+    position: relative;
+    font-weight: 600;
+    color: #4a3c00;
+}
+
+.about-me p {
+    margin-bottom: 5px;
+}
+
+.cv-link {
+    color: #4a3c00;
+    background-color: #ecbd00;
+    padding: 0 4px 1px;
+    text-decoration: none;
+    transition: all 0.2s ease;
+}
+
+.cv-link:hover {
+    background-color: #d9ae00;
+}

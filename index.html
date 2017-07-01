@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Luck Machine - Main</title>
+    <link rel="stylesheet" href="main.css">
+</head>
+<body class="home">
+
+    <div class="main-container">
+        <h1 class="app-name">LUCK MACHINE</h1>
+        <h3 class="instructions">GENERATE LUCKY NUMBERS</h3>
+        <form name="machine">
+            <input type="text" name="numbersIndicator" placeholder="888888" readonly>
+            <div class="process-indicator">
+                <div class="bulb"></div>
+                <div class="bulb"></div>
+                <div class="bulb"></div>
+                <div class="bulb"></div>
+            </div>
+                <button id="generate" type="button" name="generateBtn" value="Generate">
+                    <img class="btn-icon" src="svg/clover.svg" alt="Clover">
+                </button>
+        </form>
+        <nav>
+            <ul>
+                <a href="about.html"><li class="about">ABOUT</li></a>
+                <a class="selected" href="#"><li class="luck">LUCK</li></a>
+                <a href="settings.html"><li class="settings">SETTINGS</li></a>
+            </ul>
+        </nav>
+    </div>
+
+    <script src="main.js"></script>
+
+</body>
+</html>
