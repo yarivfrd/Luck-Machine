@@ -1,95 +1,94 @@
-// Events
-document.getElementById("generate").addEventListener("mousedown",generatePushAction);
-document.getElementById("generate").addEventListener("mouseup",generateReleaseAction);
+
+let ln = {};
 
 // Audio
-var buttonPush = document.createElement("audio");
-var buttonRelease = document.createElement("audio");
-var numberRoll = document.createElement("audio");
+ln.buttonPushSound = document.createElement("audio");
+ln.buttonReleaseSound = document.createElement("audio");
+ln.numberRollSound = document.createElement("audio");
 
-buttonPush.src = "audio/btn-push.wav";
-buttonRelease.src = "audio/btn-release.wav";
-numberRoll.src = "audio/number-roll.wav";
+ln.buttonPushSound.src = "audio/btn-push.wav";
+ln.buttonReleaseSound.src = "audio/btn-release.wav";
+ln.numberRollSound.src = "audio/number-roll.wav";
+//
 
-var bulbs = document.querySelectorAll(".bulb");
-var startMessages = ["GD-LK!","ALRHT!","LTS-GO"];
-var rolling = false;
+ln.bulbs = document.querySelectorAll(".bulb");
+ln.startMessages = ["GD-LK!","ALRHT!","LTS-GO"];
+ln.rolling = false;
 
-// Actions
-function generatePushAction() {
+ln.generatePushAction = () => {
 
-    resetButtonSounds();
-    playButtonSounds();
+    ln.resetButtonSounds();
+    ln.playButtonSounds();
 
-    if (!rolling) {
+    if (!ln.rolling) {
 
-        rolling = true;
-        resetRollSounds();
-        playRollSounds();
-        generateRandomMessage();
-        lightAllBulbs();
+        ln.rolling = true;
+        ln.resetRollSounds();
+        ln.playRollSounds();
+        ln.generateRandomMessage();
+        ln.lightAllBulbs();
 
-        var roll = setTimeout(function () {
+        ln.roll = setTimeout( () => {
 
-            var numRoll = setInterval(function(){generateNumbers() }, 100);
-            var indicatorLoop = setInterval(function(){randomizeBulbs()}, 100);
-            var indicatorLoopTimeout = setTimeout( function(){clearInterval(indicatorLoop)} ,2450);
-            var numRollTimeout = setTimeout( function(){clearInterval(numRoll);rolling = false;darkenAllBulbs();} ,2450);
+            ln.numRoll = setInterval(function(){ln.generateNumbers() }, 100);
+            ln.indicatorLoop = setInterval(function(){ln.randomizeBulbs()}, 100);
+            ln.indicatorLoopTimeout = setTimeout( function(){clearInterval(ln.indicatorLoop)} ,2450);
+            ln.numRollTimeout = setTimeout( function(){clearInterval(ln.numRoll);ln.rolling = false;ln.darkenAllBulbs();} ,2450);
 
         },650);
     }
 }
 
-function generateReleaseAction() {
-    buttonPush.pause();
-    buttonPush.currentTime = 0.0;
-    buttonRelease.play();
+ln.generateReleaseAction = function() {
+    ln.buttonPushSound.pause();
+    ln.buttonPushSound.currentTime = 0.0;
+    ln.buttonReleaseSound.play();
 }
 
-function playRollSounds() {
-    numberRoll.play();
+ln.playRollSounds = () => {
+    ln.numberRollSound.play();
 }
 
-function playButtonSounds() {
-    buttonPush.play();
+ln.playButtonSounds = () => {
+    ln.buttonPushSound.play();
 }
 
-function generateRandomMessage() {
-    document.machine.numbersIndicator.value = startMessages[Math.round(Math.random() * (startMessages.length-1))];
+ln.generateRandomMessage = () => {
+    document.machine.numbersIndicator.value = ln.startMessages[Math.round(Math.random() * (ln.startMessages.length-1))];
 }
 
-function randomizeBulbs() {
-    darkenAllBulbs();
-    bulbs[Math.round(Math.random() * (bulbs.length-1))].style.backgroundColor = "#ffeb3b";
+ln.randomizeBulbs = () => {
+    ln.darkenAllBulbs();
+    ln.bulbs[Math.round(Math.random() * (ln.bulbs.length-1))].style.backgroundColor = "#ffeb3b";
 }
 
-function lightAllBulbs() {
-    for (var i = 0;i < bulbs.length;i++) {
-        bulbs[i].style.backgroundColor = "#ffeb3b";
+ln.lightAllBulbs = () => {
+    for (var i = 0;i < ln.bulbs.length;i++) {
+        ln.bulbs[i].style.backgroundColor = "#ffeb3b";
     }
 }
 
 // Machine Resets
-function darkenAllBulbs() {
-    for (var i = 0;i < bulbs.length;i++) {
-        bulbs[i].style.backgroundColor = "#1a1a1a";
+ln.darkenAllBulbs = () => {
+    for (var i = 0;i < ln.bulbs.length;i++) {
+        ln.bulbs[i].style.backgroundColor = "#1a1a1a";
     }
 }
 
-function resetButtonSounds() {
-    buttonRelease.pause();
-    buttonRelease.currentTime = 0.0;
+ln.resetButtonSounds = () => {
+    ln.buttonReleaseSound.pause();
+    ln.buttonReleaseSound.currentTime = 0.0;
 
-    buttonPush.pause();
-    buttonPush.currentTime = 0.0;
+    ln.buttonPushSound.pause();
+    ln.buttonPushSound.currentTime = 0.0;
 }
 
-function resetRollSounds() {
-    numberRoll.pause();
-    numberRoll.currentTime = 0.0;
+ln.resetRollSounds = () => {
+    ln.numberRollSound.pause();
+    ln.numberRollSound.currentTime = 0.0;
 }
 
-function generateNumbers(numbersLength=6,rangeMax=9,rangeMin=0) {
+ln.generateNumbers = (numbersLength=6,rangeMax=9,rangeMin=0) => {
     var numberSet = new Set();
 
     while(numberSet.size < numbersLength) {
@@ -98,3 +97,9 @@ function generateNumbers(numbersLength=6,rangeMax=9,rangeMin=0) {
 
     document.machine.numbersIndicator.value = Array.from(numberSet).join("");
 }
+
+// Events
+ln.generateBtn = document.getElementById("generate");
+ln.generateBtn.addEventListener("mousedown",ln.generatePushAction);
+ln.generateBtn.addEventListener("mouseup",ln.generateReleaseAction);
+//
