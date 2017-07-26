@@ -241,7 +241,7 @@ form[name="number-length"] input[type="radio"]#radio6:after {content: "6";}
 /* About Page */
 .about-me {
     background-color: #ffcc00;
-    margin: 0 15px;
+    margin: 13px 15px 0;
     padding: 15px;
     position: relative;
     font-weight: 600;
