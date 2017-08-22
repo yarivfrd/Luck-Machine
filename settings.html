@@ -3,24 +3,37 @@
 <head>
     <meta charset="UTF-8">
     <title>Luck Machine - Settings</title>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+    <link rel="stylesheet" href="https://ajax.googleapis.com/ajax/libs/jqueryui/1.12.1/themes/smoothness/jquery-ui.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jqueryui/1.12.1/jquery-ui.min.js"></script>
     <link rel="stylesheet" href="main.css">
 </head>
 <body class="settings">
 
     <div class="main-container">
         <h1 class="app-name">LUCK MACHINE</h1>
-        <div class="notice">Coming Soon</div>
         <div class="settings-container">
+            <h3 class="instructions">NUMBERS TO ROLL</h3>
             <form name="number-length">
                 <input id="radio1" name="length" type="radio" value="1">
+                <label for="radio1">1</label>
                 <input id="radio2" name="length" type="radio" value="2">
+                <label for="radio2">2</label>
                 <input id="radio3" name="length" type="radio" value="3">
+                <label for="radio3">3</label>
                 <input id="radio4" name="length" type="radio" value="4">
+                <label for="radio4">4</label>
                 <input id="radio5" name="length" type="radio" value="5">
+                <label for="radio5">5</label>
                 <input id="radio6" name="length" type="radio" value="6">
+                <label for="radio6">6</label>
             </form>
-            <div class="number-range">
-                <input id="numbersRange" type="range">
+            <h3 class="instructions">NUMBER RANGE: <div class="selected-range"><span id="selected-min-range">...</span>-<span id="selected-max-range">...</span></div></h3>
+            <div class="number-range-container">
+              <div class="number-range">
+                  <div id="slider-range"></div>
+              </div>
+              <div class="range-alert hidden">WHOOPS! RANGE IS TOO SMALL.</div>
             </div>
         </div>
         <nav>
@@ -31,6 +44,6 @@
             </ul>
         </nav>
     </div>
-
+<script src="settings.js" charset="utf-8"></script>
 </body>
 </html>

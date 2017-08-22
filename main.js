@@ -1,16 +1,18 @@
 
 let ln = {};
 
-// Audio
 ln.buttonPushSound = document.createElement("audio");
 ln.buttonReleaseSound = document.createElement("audio");
 ln.numberRollSound = document.createElement("audio");
-
 ln.buttonPushSound.src = "audio/btn-push.wav";
 ln.buttonReleaseSound.src = "audio/btn-release.wav";
 ln.numberRollSound.src = "audio/number-roll.wav";
-//
 
+ln.minRange = '1';
+ln.maxRange = '6';
+ln.rollingNumbers = '6'
+
+ln.generateBtn = document.getElementById("generate");
 ln.bulbs = document.querySelectorAll(".bulb");
 ln.startMessages = ["GD-LK!","ALRHT!","LTS-GO"];
 ln.rolling = false;
@@ -88,7 +90,7 @@ ln.resetRollSounds = () => {
     ln.numberRollSound.currentTime = 0.0;
 }
 
-ln.generateNumbers = (numbersLength=6,rangeMax=9,rangeMin=0) => {
+ln.generateNumbers = (numbersLength=Number(ln.rollingNumbers),rangeMax=Number(ln.maxRange),rangeMin=Number(ln.minRange)) => {
     var numberSet = new Set();
 
     while(numberSet.size < numbersLength) {
@@ -98,8 +100,18 @@ ln.generateNumbers = (numbersLength=6,rangeMax=9,rangeMin=0) => {
     document.machine.numbersIndicator.value = Array.from(numberSet).join("");
 }
 
-// Events
-ln.generateBtn = document.getElementById("generate");
+// User data storage
+for (let storageEntry = 0; storageEntry < localStorage.length; storageEntry++) {
+    if (localStorage.key(storageEntry) === 'lmRollingNumbers') {
+      ln.rollingNumbers = localStorage.getItem('lmRollingNumbers');
+    }
+    if (localStorage.key(storageEntry) === 'lmMinRange') {
+      ln.minRange = localStorage.getItem('lmMinRange');
+    }
+    if (localStorage.key(storageEntry) === 'lmMaxRange') {
+      ln.maxRange = localStorage.getItem('lmMaxRange');
+    }
+}
+
 ln.generateBtn.addEventListener("mousedown",ln.generatePushAction);
 ln.generateBtn.addEventListener("mouseup",ln.generateReleaseAction);
-//

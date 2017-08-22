@@ -26,6 +26,7 @@
 body {
     background-color: #4d4d4d;
     font-family: Assistant;
+    user-select: none;
 }
 
 h1 {
@@ -169,11 +170,19 @@ input[name="numbersIndicator"] {
     fill: #246a00;
 }
 
+/* Navigation */
 nav {
     position: absolute;
     left: 0;
     right: 0;
     bottom: 0;
+    transition: all 0.2s ease;
+}
+
+nav.disabled {
+  pointer-events: none;
+  cursor: default;
+  filter: grayscale(100%);
 }
 
 nav ul {
@@ -189,29 +198,36 @@ nav a {
     width: 33.333%;
     text-align: center;
     padding: 10px 5px;
+    transition: all 0.2s ease;
+}
+
+nav a:hover {
+  background-color: #2c84d8;
 }
 
 nav a.selected {
-    background-color: #1375d4;
+  background-color: #1375d4;
 }
 
 nav a li {
-    width: 100%;
+  width: 100%;
 }
 
 /* Settings Page */
 .settings-container {
-    display: flex;
-    align-items: center;
-    justify-content: space-around;
-    margin-bottom: 63px;
+  text-align: center;
+  margin: 20px 26px 63px;
+}
+
+.settings-container .instructions {
+  text-align: left;
 }
 
 form[name="number-length"] {
-    display: grid;
-    grid-template-columns: repeat(3, 1fr);
-    grid-gap: 30px;
-    margin: 0 0 25px;
+    display: flex;
+    justify-content: center;
+    margin: 0 0 35px;
+    width: 100%;
 }
 
 input[type="radio"] {
@@ -219,24 +235,86 @@ input[type="radio"] {
 }
 
 form[name="number-length"] input[type="radio"] {
-    position: relative;
-    width: 30px;
-    height: 30px;
+    display: none;
 }
 
-form[name="number-length"] input[type="radio"]:after {
-    color: white;
-    position: absolute;
-    top: 35px;
-    left: 50%;
-    transform: translate(-50%,0);
+form[name="number-length"] input[type="radio"]:checked+label {
+    background-color: #1375d4;
 }
-form[name="number-length"] input[type="radio"]#radio1:after {content: "1";}
-form[name="number-length"] input[type="radio"]#radio2:after {content: "2";}
-form[name="number-length"] input[type="radio"]#radio3:after {content: "3";}
-form[name="number-length"] input[type="radio"]#radio4:after {content: "4";}
-form[name="number-length"] input[type="radio"]#radio5:after {content: "5";}
-form[name="number-length"] input[type="radio"]#radio6:after {content: "6";}
+
+form[name="number-length"] label {
+  color: white;
+  background-color: #1e90ff;
+  cursor: pointer;
+  font-weight: 800;
+  font-size: 20px;
+  padding: 7px 17px 10px;
+  display: inline-block;
+  transition: all 0.2s ease;
+}
+
+form[name="number-length"] label:hover {
+  background-color: #2c84d8;
+}
+
+.selected-range {
+  display: inline-block;
+  transition: all ease 0.1s;
+}
+
+.bounce {
+  transform: translate(0,-3px);
+}
+
+.number-range-container {
+  text-align: left;
+}
+
+.number-range {
+  width: 100%;
+  border: solid 5px #a02c2c;
+  padding: 15px 26px 15px 22px;
+  box-sizing: border-box;
+}
+
+#slider-range {
+  border: none;
+  background-color: #222;
+}
+
+.ui-slider-range {
+  background: none;
+  background-color: dodgerblue;
+}
+
+#slider-range, .ui-slider .ui-slider-handle {
+  cursor: pointer;
+}
+
+.ui-slider .ui-slider-handle {
+  border: solid 2px white;
+  background: #1375d4;
+  border-radius: 50%;
+  outline: 0;
+}
+
+.range-alert {
+  color: #a02c2c;
+  font-weight: 800;
+  background-color: white;
+  margin: 5px 0 0;
+  display: inline-block;
+  padding: 2px 5px;
+  font-size: 14px;
+  opacity: 1;
+  transition: all ease 0.2s;
+}
+
+.range-alert.hidden {
+  visibility: hidden;
+  opacity: 0;
+  transform: translate(0,-5px);
+}
 
 /* About Page */
 .about-me {
