@@ -81,8 +81,10 @@ ln.selectionAction = (selected) => {
   ln.maxRange = '6';
   if ((ln.maxRange - ln.minRange + 1) < ln.rollingNumbers) {
     document.querySelector('nav').classList.add('disabled');
+    document.querySelector('.range-alert').classList.remove('hidden');
   } else {
     document.querySelector('nav').classList.remove('disabled');
+    document.querySelector('.range-alert').classList.add('hidden');
   }
 };
 
