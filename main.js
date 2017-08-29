@@ -19,12 +19,10 @@ ln.rolling = false;
 
 ln.generatePushAction = () => {
 
-    ln.resetButtonSounds();
-    ln.playButtonSounds();
-
     if (!ln.rolling) {
 
         ln.rolling = true;
+        window.navigator.vibrate(50);
         ln.resetRollSounds();
         ln.playRollSounds();
         ln.generateRandomMessage();

@@ -1,0 +1,485 @@
+/* General */
+@font-face {
+    font-family: Assistant;
+    src: url(fonts/Assistant-Regular.ttf);
+    font-weight: normal;
+}
+
+@font-face {
+    font-family: Assistant;
+    src: url(fonts/Assistant-SemiBold.ttf);
+    font-weight: 600;
+}
+
+@font-face {
+    font-family: Assistant;
+    src: url(fonts/Assistant-ExtraBold.ttf);
+    font-weight: 800;
+}
+
+@font-face {
+    font-family: PressStart2P;
+    src: url(fonts/PressStart2P-Regular.ttf);
+    font-weight: normal;
+}
+
+body {
+    background-color: #4d4d4d;
+    font-family: Assistant;
+    user-select: none;
+}
+
+h1 {
+    margin: 0;
+}
+
+ul {
+    margin: 0;
+    padding-left: 0;
+    list-style: none;
+}
+
+p {
+    margin: 0;
+}
+
+hr {
+    border: solid 1px #e3b800;
+}
+
+input:last-of-type {
+    margin-bottom: 0;
+}
+
+input[type="text"], input[type="number"] {
+    border: 0;
+    width: 100%;
+    padding: 5px;
+    box-sizing: border-box;
+}
+
+input[type="button"] {
+    width: 25%;
+    margin-bottom: 5px;
+}
+
+input[type="button"].full-width {
+    width: 100%;
+}
+
+input[type="submit"] {
+    width: 100%;
+    margin-bottom: 5px;
+}
+
+.notice {
+    color: red;
+    background-color: white;
+    border:solid 5px red;
+    border-radius: 20px;
+    font-weight: 800;
+    padding: 2px 10px 5px;
+    font-size: 25px;
+    margin: 10px;
+    display: inline-block;
+}
+
+/* Main Page */
+.main-container {
+    background-color: #c83737;
+    margin: 30px auto 0;
+    width: 320px;
+    border: solid 7px #ffcc00;
+    box-shadow: 0 5px 0 #333;
+    height: 395px;
+    position: relative;
+}
+
+form[name="machine"] {
+    text-align: center;
+}
+
+.app-name {
+    text-align: center;
+    color: white;
+    background-color: #a02c2c;
+    padding: 3px 0 5px;
+    font-size: 43px;
+    font-weight: 800;
+    margin-bottom: 5px;
+}
+
+.instructions {
+    text-align: center;
+    margin: 0;
+    color: #582323;
+    margin-bottom: 5px;
+}
+
+input#numbersIndicator {
+    color: lime;
+    background-color: #222;
+    width: 80%;
+    font-family: PressStart2P;
+    text-align: center;
+    border: solid 4px #7f2323;
+    font-size: 31px;
+    padding: 30px 15px 25px;
+    letter-spacing: 6px;
+    height: 80px;
+}
+
+.process-indicator {
+    background-color: #d44c4c;
+    display: flex;
+    height: 15px;
+    justify-content: space-between;
+    width: 40%;
+    margin: 0 auto 30px;
+    padding: 5px 23px;
+    border-bottom-right-radius: 10px;
+    border-bottom-left-radius: 10px;
+}
+
+.process-indicator .bulb {
+    background-color: #1a1a1a;
+    height: auto;
+    width: 15px;
+    border-radius: 100%;
+}
+
+#generate {
+    width: 55%;
+    background-color: #55d400;
+    border: 0;
+    cursor: pointer;
+    padding: 17px 0 12px;
+    box-shadow: 0 3px 0 #246a00;
+    margin-bottom: 20px;
+    outline: 0;
+    transition: all 0.1s ease;
+}
+
+#generate:active {
+    box-shadow: 0 0 0 #246a00;
+    transform: translate(0,3px);
+}
+
+#generate .btn-icon {
+    width: 25%;
+    fill: #246a00;
+}
+
+/* Navigation */
+nav {
+    position: absolute;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    transition: all 0.2s ease;
+}
+
+nav.disabled {
+  pointer-events: none;
+  cursor: default;
+  filter: grayscale(100%);
+}
+
+nav ul {
+    display: flex;
+    justify-content: space-around;
+}
+
+nav a {
+    background-color: dodgerblue;
+    color: white;
+    text-decoration: none;
+    font-weight: 800;
+    width: 33.333%;
+    text-align: center;
+    padding: 10px 5px;
+    transition: all 0.2s ease;
+}
+
+nav a:hover {
+  background-color: #2c84d8;
+}
+
+nav a.selected {
+  background-color: #1375d4;
+}
+
+nav a li {
+  width: 100%;
+}
+
+/* Settings Page */
+.settings-container {
+  text-align: center;
+  margin: 20px 26px 63px;
+}
+
+.settings-container .instructions {
+  text-align: left;
+}
+
+form[name="number-length"] {
+    display: flex;
+    justify-content: center;
+    margin: 0 0 35px;
+    width: 100%;
+}
+
+input[type="radio"] {
+    margin: 0;
+}
+
+form[name="number-length"] input[type="radio"] {
+    display: none;
+}
+
+form[name="number-length"] input[type="radio"]:checked+label {
+    background-color: #1375d4;
+}
+
+form[name="number-length"] label {
+  color: white;
+  background-color: #1e90ff;
+  cursor: pointer;
+  font-weight: 800;
+  font-size: 20px;
+  padding: 7px 17px 10px;
+  display: inline-block;
+  transition: all 0.2s ease;
+}
+
+form[name="number-length"] label:hover {
+  background-color: #2c84d8;
+}
+
+.selected-range {
+  display: inline-block;
+  transition: all ease 0.1s;
+}
+
+.bounce {
+  transform: translate(0,-3px);
+}
+
+.number-range-container {
+  text-align: left;
+}
+
+.number-range {
+  width: 100%;
+  border: solid 5px #a02c2c;
+  padding: 15px 26px 15px 22px;
+  box-sizing: border-box;
+}
+
+#slider-range {
+  border: none;
+  background-color: #222;
+}
+
+.ui-slider-range {
+  background: none;
+  background-color: dodgerblue;
+}
+
+#slider-range, .ui-slider .ui-slider-handle {
+  cursor: pointer;
+}
+
+.ui-slider .ui-slider-handle {
+  border: solid 2px white;
+  background: #1375d4;
+  border-radius: 50%;
+  outline: 0;
+}
+
+.range-alert {
+  color: #a02c2c;
+  font-weight: 800;
+  background-color: white;
+  margin: 5px 0 0;
+  display: inline-block;
+  padding: 2px 5px;
+  font-size: 14px;
+  opacity: 1;
+  transition: all ease 0.2s;
+}
+
+.range-alert.hidden {
+  visibility: hidden;
+  opacity: 0;
+  transform: translate(0,-5px);
+}
+
+/* About Page */
+.about-me {
+    background-color: #ffcc00;
+    margin: 13px 15px 0;
+    padding: 15px;
+    position: relative;
+    font-weight: 600;
+    color: #4a3c00;
+}
+
+.about-me p {
+    margin-bottom: 5px;
+}
+
+.cv-link {
+    color: #4a3c00;
+    background-color: #ecbd00;
+    padding: 0 4px 1px;
+    text-decoration: none;
+    transition: all 0.2s ease;
+}
+
+.cv-link:hover {
+    background-color: #d9ae00;
+}
+
+
+/* Responsive Adjustments */
+@media screen and (max-width: 480px) {
+
+  body {
+    margin: 0;
+    position: fixed;
+    overflow: hidden;
+    width: 100%;
+  }
+
+  .main-container {
+    margin: 0;
+    width: 100%;
+    height: calc(100vh - 40.8px);
+    border: none;
+    box-shadow: none;
+  }
+
+  nav {
+    position: fixed;
+  }
+
+  nav a {
+    padding: 20px 5px;
+  }
+
+}
+
+/* jQuery Overrides */
+
+.ui-widget {
+    font-family: inherit;
+}
+
+.ui-bar-a, .ui-bar-a input, .ui-bar-a select, .ui-bar-a textarea, .ui-bar-a button, .ui-body-c, .ui-body-c input, .ui-body-c select, .ui-body-c textarea, .ui-body-c button {
+    font-family: Assistant;
+    text-shadow: none;
+}
+
+.ui-bar-a {
+    background-image: none;
+    border: 0;
+}
+
+.ui-body-c {
+    background-image: none;
+    background-color: #c83737;
+    text-shadow: none;
+    border: 0;
+}
+
+.ui-bar-a a.ui-link:visited, .ui-bar-a a.ui-link, .ui-body-c .ui-link, .ui-bar-a a.ui-link:visited,.ui-body-c .ui-link:visited, .ui-bar-a a.ui-link:visited {
+    color: white;
+}
+
+.ui-shadow-inset {
+    box-shadow: none;
+}
+
+input#numbersIndicator {
+    margin: 0 auto;
+    margin: 0 auto 20px;
+}
+
+.ui-header .ui-title, .ui-footer .ui-title {
+    font-size: inherit;
+    min-height: auto;
+    margin: 0;
+}
+
+.ui-content {
+    padding: 0;
+    overflow: hidden;
+}
+
+.ui-input-search, div.ui-input-text {
+    margin: 0;
+}
+
+div.ui-input-text {
+    padding: 0;
+}
+
+.ui-corner-all {
+    border-radius: 0;
+}
+
+.ui-state-default, .ui-widget-content .ui-state-default, .ui-widget-header .ui-state-default, .ui-button, html .ui-button.ui-state-disabled:hover, html .ui-button.ui-state-disabled:active {
+    background: inherit;
+}
+
+.ui-state-hover, .ui-widget-content .ui-state-hover, .ui-widget-header .ui-state-hover, .ui-state-focus, .ui-widget-content .ui-state-focus, .ui-widget-header .ui-state-focus, .ui-button:hover, .ui-button:focus {
+    background: inherit;
+}
+
+.ui-bar-a a.ui-link:visited {
+    color: white;
+}
+
+.ui-body-c .ui-link:visited {
+    color: white;
+}
+
+.ui-body-c .cv-link.ui-link {
+    color: #4a3c00;
+    font-weight: 600;
+}
+
+.ui-button .ui-icon {
+    display: none;
+}
+
+form[name="number-length"] label {
+    border: 0;
+    margin: 0;
+}
+
+.ui-state-active, .ui-widget-content .ui-state-active, .ui-widget-header .ui-state-active, a.ui-button:active, .ui-button:active, .ui-button.ui-state-active:hover {
+    border: none;
+    background: inherit;
+    color: white;
+    font-weight: 800;
+}
+
+div.ui-slider {
+    margin: 0;
+    height: .8em;    
+}
+
+.ui-slider .ui-slider-handle.ui-state-default {
+    background: #1375d4;
+}
+
+.ui-slider .ui-slider-handle.ui-state-active {
+    border: solid 2px white;
+}
+
+.ui-input-text.ui-focus,.ui-input-search.ui-focus {
+    box-shadow: none;
+}

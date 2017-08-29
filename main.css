@@ -341,3 +341,32 @@ form[name="number-length"] label:hover {
 .cv-link:hover {
     background-color: #d9ae00;
 }
+
+
+/* Responsive Adjustments */
+@media screen and (max-width: 480px) {
+
+  body {
+    margin: 0;
+    position: fixed;
+    overflow: hidden;
+    width: 100%;
+  }
+
+  .main-container {
+    margin: 0;
+    width: 100%;
+    height: calc(100vh - 40.8px);
+    border: none;
+    box-shadow: none;
+  }
+
+  nav {
+    position: fixed;
+  }
+
+  nav a {
+    padding: 20px 5px;
+  }
+
+}
