@@ -8,5 +8,4 @@ May luck be always on your side!
 Yariv Fruend
 
 Sounds by:<br> 
-Squared Glasses<br> 
 Sara Elizabeth
